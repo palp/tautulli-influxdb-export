@@ -1,4 +1,8 @@
 #!/bin/sh
+if [ -f /run/secrets/tautulli-api.env ]; then
+    source /run/secrets/tautulli-api.env
+    export PLEXPY_API_KEY INFLUXDB_USER INFLUXDB_PASSWORD
+fi
 
 cmd_args="--plexpyhost $PLEXPY_HOST --plexpyapikey $PLEXPY_API_KEY --influxdbhost $INFLUXDB_HOST"
 if [ ! -z "$PLEXPY_PORT" ]; then
